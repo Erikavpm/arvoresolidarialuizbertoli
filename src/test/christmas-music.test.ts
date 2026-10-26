@@ -41,4 +41,12 @@ describe("Trilha instrumental de Natal", () => {
     expect(length).toBeGreaterThan(60);
     expect(length).toBeLessThan(200);
   });
+
+  // A página toca sozinha, sem botão: uma música alegre só, em ciclo.
+  it("deixa escolher uma única música, que se repete sozinha", () => {
+    const single = planMedley(["Jingle Bells"]);
+    expect(single.marks.map((mark) => mark.title)).toEqual(["Jingle Bells"]);
+    expect(single.length).toBeGreaterThan(20);
+    expect(single.length).toBeLessThan(60);
+  });
 });
