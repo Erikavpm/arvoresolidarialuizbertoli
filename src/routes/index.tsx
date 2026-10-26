@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { AutoMusic } from "@/components/AutoMusic";
 import logoRecanto from "@/assets/logo-recanto-official.png.asset.json";
+import qrPix from "@/assets/qrcode-pix.png.asset.json";
 
 
 export const Route = createFileRoute("/")({
@@ -18,9 +19,10 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-// Dados oficiais: substituir quando disponíveis.
-const PIX_KEY = "[CHAVE PIX OFICIAL — A DEFINIR]";
-const PIX_QR_IMAGE: string | null = null; // ex.: "/images/qrcode-pix.png"
+// Dados oficiais da doação: chave e QR Code Pix fornecidos pela organização.
+const PIX_KEY = "+5547996538278";
+const PIX_QR_IMAGE: string | null = qrPix.url;
+const PIX_RECEIVER = "IPMMI – Recanto Luiz Bertoli";
 
 type Ornament = { x: number; y: number; size: number; color: string; title: string; msg: string };
 
@@ -213,10 +215,11 @@ Neste Natal, doe amor. Compartilhe esperança. Faça a diferença!</p>
             <h3 id="orn-title" className="mt-1 font-display text-5xl text-primary">{o.title}</h3>
             <p className="mt-3 text-lg italic leading-snug text-foreground/85">“{o.msg}”</p>
             <p className="mt-4 text-sm text-muted-foreground">Se desejar, contribua com o Recanto Luiz Bertoli pelo Pix:</p>
-            <div className="mx-auto mt-3 flex aspect-square w-44 items-center justify-center rounded-xl border-2 border-dashed bg-muted text-xs text-muted-foreground">
-              {PIX_QR_IMAGE ? <img src={PIX_QR_IMAGE} alt="QR Code Pix oficial" className="h-full w-full rounded-xl object-contain" /> : "QR Code Pix oficial (a inserir)"}
+            <div className="mx-auto mt-3 flex aspect-square w-48 items-center justify-center rounded-xl border border-primary/15 bg-white p-2 shadow-sm">
+              {PIX_QR_IMAGE && <img src={PIX_QR_IMAGE} alt="QR Code Pix oficial para doação ao Recanto Luiz Bertoli" className="h-full w-full object-contain" />}
             </div>
             <p className="mt-3 break-all rounded-lg bg-muted px-3 py-2 text-sm font-mono">{PIX_KEY}</p>
+            <p className="mt-2 text-xs text-muted-foreground">Recebedor: <span className="font-semibold text-foreground/80">{PIX_RECEIVER}</span></p>
             <button onClick={copy} className="mt-3 w-full rounded-full bg-primary py-3 font-semibold text-primary-foreground transition hover:opacity-90">
               {copied ? "Chave copiada!" : "Copiar chave Pix"}
             </button>
