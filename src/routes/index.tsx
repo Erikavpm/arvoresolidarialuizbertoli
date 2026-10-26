@@ -114,7 +114,7 @@ function Index() {
           width={844}
           height={445}
           draggable={false}
-          className="mx-auto mb-2 w-64 select-none drop-shadow-[0_6px_18px_oklch(0.4_0.06_245/0.16)] sm:mb-4 sm:w-96"
+          className="mx-auto mb-4 w-64 select-none drop-shadow-[0_6px_18px_oklch(0.4_0.06_245/0.16)] sm:mb-4 sm:w-96"
         />
 
         <h1 className="mt-2 px-4 font-display text-7xl leading-[1.1] text-primary sm:text-9xl">Natal Solidário</h1>
