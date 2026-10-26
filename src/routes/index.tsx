@@ -98,6 +98,7 @@ function Index() {
 
   return (
     <main className="relative overflow-hidden">
+      <MusicToggle />
       <div aria-hidden className="pointer-events-none fixed inset-0">
         {flakes.map((f, i) => (
           <span key={i} className="snowflake absolute -top-4 rounded-full bg-primary/30"
