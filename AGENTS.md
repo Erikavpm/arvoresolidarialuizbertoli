@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Music playback uses one shared loading promise and serialized starts; pause cancels pending playback so overlapping gestures cannot leave orphan audio playing.
