@@ -24,9 +24,11 @@ const SEMITONES: Record<string, number> = {
 };
 
 function midiOf(name: string): number {
-  const m = /^([A-G]#?)(-?\d)$/.exec(name);
-  if (!m) throw new Error(`Nota inválida: ${name}`);
-  return (Number(m[2]) + 1) * 12 + SEMITONES[m[1]];
+  const letter = /^([A-G]#?)(-?\d)$/.exec(name)?.[1];
+  const octave = /^([A-G]#?)(-?\d)$/.exec(name)?.[2];
+  const semitone = letter === undefined ? undefined : SEMITONES[letter];
+  if (semitone === undefined || octave === undefined) throw new Error(`Nota inválida: ${name}`);
+  return (Number(octave) + 1) * 12 + semitone;
 }
 
 function hz(midi: number): number {
@@ -452,8 +454,9 @@ export function createChristmasMusic(options: MusicOptions = {}): MusicControlle
     const audio = ctx;
     if (!audio || audio.state !== "running") return;
     const horizon = audio.currentTime + LOOKAHEAD;
-    while (events[index].t + loopAt < horizon) {
+    for (let guard = 0; guard < events.length; guard++) {
       const e = events[index];
+      if (!e || e.t + loopAt >= horizon) break;
       emitTitle(e.t);
       schedule(e, e.t + loopAt);
       index += 1;
@@ -473,7 +476,7 @@ export function createChristmasMusic(options: MusicOptions = {}): MusicControlle
     master!.gain.linearRampToValueAtTime(VOLUME, audio.currentTime + 0.9);
     if (timer === null) {
       // Retoma exatamente de onde parou: o próximo evento deve cair "agora".
-      loopAt = audio.currentTime + 0.2 - events[index].t;
+      loopAt = audio.currentTime + 0.2 - (events[index]?.t ?? 0);
       timer = setInterval(tick, TICK);
       tick();
     }

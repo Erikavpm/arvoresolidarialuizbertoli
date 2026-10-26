@@ -33,8 +33,10 @@ describe("Trilha instrumental de Natal", () => {
 
   it("encadeia os eventos no tempo e fecha o ciclo entre 1 e 3 minutos", () => {
     const { events, length } = planMedley();
-    for (let i = 1; i < events.length; i++) {
-      expect(events[i].t).toBeGreaterThanOrEqual(events[i - 1].t);
+    let previous = -1;
+    for (const event of events) {
+      expect(event.t).toBeGreaterThanOrEqual(previous);
+      previous = event.t;
     }
     expect(length).toBeGreaterThan(60);
     expect(length).toBeLessThan(200);
