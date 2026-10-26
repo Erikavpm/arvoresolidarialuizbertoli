@@ -107,14 +107,14 @@ function Index() {
         ))}
       </div>
 
-      <header className="relative pt-10 text-center sm:pt-16">
+      <header className="relative pt-14 text-center sm:pt-20">
         <img
           src={logoRecanto.url}
           alt="Recanto Luiz Bertoli"
           width={1176}
           height={801}
           draggable={false}
-          className="mx-auto w-44 select-none drop-shadow-[0_6px_18px_oklch(0.4_0.06_245/0.16)] sm:w-60"
+          className="mx-auto mb-3 w-44 select-none drop-shadow-[0_6px_18px_oklch(0.4_0.06_245/0.16)] sm:mb-5 sm:w-60"
         />
 
         <h1 className="mt-2 px-4 font-display text-7xl leading-[1.1] text-primary sm:text-9xl">Natal Solidário</h1>
