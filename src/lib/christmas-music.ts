@@ -74,7 +74,7 @@ const JINGLE_B: MelodyEvent[] = [
 export const SECTIONS: Section[] = [
   {
     title: "Jingle Bells",
-    bpm: 132,
+    bpm: 138,
     beatsPerBar: 4,
     sleigh: true,
     melody: [
@@ -208,12 +208,13 @@ function planSection(section: Section, index: number): Planned[] {
   return out;
 }
 
-export function planMedley(): { events: Planned[]; length: number; marks: { t: number; title: string }[] } {
+export function planMedley(titles?: string[]): { events: Planned[]; length: number; marks: { t: number; title: string }[] } {
   const events: Planned[] = [];
   const marks: { t: number; title: string }[] = [];
   let offset = 0;
 
   SECTIONS.forEach((section, index) => {
+    if (titles && !titles.includes(section.title)) return;
     const planned = planSection(section, index);
     const end = planned.reduce((max, e) => Math.max(max, e.t + e.dur), 0);
     marks.push({ t: offset, title: section.title });
@@ -365,12 +366,20 @@ export type MusicController = {
   start: () => Promise<void>;
   stop: () => void;
   isPlaying: () => boolean;
+  /** true só quando o som está saindo de fato (contexto de áudio ativo). */
+  isRunning: () => boolean;
 };
 
-export type MusicOptions = { onTitle?: (title: string) => void };
+export type MusicOptions = {
+  onTitle?: (title: string) => void;
+  /** Toca só as músicas listadas (por título). Sem isso, toca o medley inteiro. */
+  titles?: string[];
+  volume?: number;
+};
 
 export function createChristmasMusic(options: MusicOptions = {}): MusicController {
-  const { events, length, marks } = planMedley();
+  const { events, length, marks } = planMedley(options.titles);
+  const volume = options.volume ?? VOLUME;
 
   let ctx: AudioContext | null = null;
   let master: GainNode | null = null;
@@ -474,7 +483,7 @@ export function createChristmasMusic(options: MusicOptions = {}): MusicControlle
     await audio.resume();
     master!.gain.cancelScheduledValues(audio.currentTime);
     master!.gain.setValueAtTime(Math.max(master!.gain.value, 0.0001), audio.currentTime);
-    master!.gain.linearRampToValueAtTime(VOLUME, audio.currentTime + 0.9);
+    master!.gain.linearRampToValueAtTime(volume, audio.currentTime + 0.9);
     if (timer === null) {
       // Retoma exatamente de onde parou: o próximo evento deve cair "agora".
       loopAt = audio.currentTime + 0.2 - (events[index]?.t ?? 0);
@@ -500,5 +509,10 @@ export function createChristmasMusic(options: MusicOptions = {}): MusicControlle
     }, 400);
   }
 
-  return { start, stop, isPlaying: () => playing };
+  return {
+    start,
+    stop,
+    isPlaying: () => playing,
+    isRunning: () => playing && ctx?.state === "running",
+  };
 }
