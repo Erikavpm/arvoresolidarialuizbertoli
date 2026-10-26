@@ -110,13 +110,13 @@ function Index() {
           alt="Recanto Luiz Bertoli — Rede Madre"
           className="mx-auto w-56 sm:w-72"
         />
-        <h1 className="mt-2 px-4 font-display text-8xl leading-[1.1] text-primary sm:text-9xl">Natal Solidário</h1>
-        <p className="mt-1 px-4 text-lg font-semibold uppercase tracking-[0.28em] text-muted-foreground sm:text-2xl">
+        <h1 className="mt-2 px-4 font-display text-7xl leading-[1.1] text-primary sm:text-9xl">Natal Solidário</h1>
+        <p className="mt-1 px-4 text-base font-semibold uppercase tracking-[0.28em] text-muted-foreground sm:text-2xl">
           Árvore de Natal Solidária 2026
         </p>
-        <div className="mt-6 flex flex-col items-center gap-1 px-4">
-          <p className="inline-flex items-center gap-3 rounded-full border-2 border-primary/25 bg-card px-8 py-5 text-xl font-extrabold text-primary shadow-[0_8px_28px_oklch(0_0_0/0.10)] sm:px-12 sm:py-6 sm:text-3xl">
-            <span aria-hidden className="h-6 w-6 fill-gold sm:h-8 sm:w-8">
+        <div className="mt-5 flex flex-col items-center gap-1 px-4">
+          <p className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border-2 border-primary/25 bg-card px-5 py-3.5 text-[17px] font-extrabold text-primary shadow-[0_8px_28px_oklch(0_0_0/0.10)] sm:gap-3 sm:px-12 sm:py-6 sm:text-3xl">
+            <span aria-hidden className="h-5 w-5 fill-gold sm:h-8 sm:w-8">
               <svg viewBox="0 0 24 24" className="h-full w-full"><path d="M12 15.4 5.3 8.7l1.4-1.4L12 12.6l5.3-5.3 1.4 1.4z" /></svg>
             </span>
             Toque nas bolinhas da árvore
