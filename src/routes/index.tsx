@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
+import { MusicToggle } from "@/components/MusicToggle";
 
 
 export const Route = createFileRoute("/")({
@@ -97,6 +98,7 @@ function Index() {
 
   return (
     <main className="relative overflow-hidden">
+      <MusicToggle />
       <div aria-hidden className="pointer-events-none fixed inset-0">
         {flakes.map((f, i) => (
           <span key={i} className="snowflake absolute -top-4 rounded-full bg-primary/30"
