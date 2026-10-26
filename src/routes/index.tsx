@@ -110,10 +110,26 @@ function Index() {
           alt="Recanto Luiz Bertoli — Rede Madre"
           className="mx-auto w-56 sm:w-72"
         />
-        <h1 className="mt-4 px-6 font-display text-6xl text-primary sm:text-7xl">Natal Solidário</h1>
-        <p className="mt-1 text-xs font-semibold uppercase tracking-[0.35em] text-muted-foreground">Árvore de Natal Solidária 2026</p>
-        <p className="mx-auto mt-3 max-w-md px-6 text-sm text-foreground/75">Toque em um enfeite para receber uma mensagem e ajudar o Recanto Luiz Bertoli.</p>
+        <h1 className="mt-2 px-4 font-display text-8xl leading-[1.1] text-primary sm:text-9xl">Natal Solidário</h1>
+        <p className="mt-1 px-4 text-lg font-semibold uppercase tracking-[0.28em] text-muted-foreground sm:text-2xl">
+          Árvore de Natal Solidária 2026
+        </p>
+        <div className="mt-6 flex flex-col items-center gap-1 px-4">
+          <p className="inline-flex items-center gap-3 rounded-full border-2 border-primary/25 bg-card px-8 py-5 text-xl font-extrabold text-primary shadow-[0_8px_28px_oklch(0_0_0/0.10)] sm:px-12 sm:py-6 sm:text-3xl">
+            <span aria-hidden className="h-6 w-6 fill-gold sm:h-8 sm:w-8">
+              <svg viewBox="0 0 24 24" className="h-full w-full"><path d="M12 15.4 5.3 8.7l1.4-1.4L12 12.6l5.3-5.3 1.4 1.4z" /></svg>
+            </span>
+            Toque nas bolinhas da árvore
+          </p>
+          <svg aria-hidden viewBox="0 0 24 24" className="h-9 w-9 animate-bounce fill-gold sm:h-12 sm:w-12">
+            <path d="M12 15.4 5.3 8.7 6.7 7.3 12 12.6l5.3-5.3 1.4 1.4z" />
+          </svg>
+        </div>
+        <p className="mx-auto mt-2 max-w-xl px-6 text-base text-foreground/75 sm:text-lg">
+          Cada enfeite guarda uma mensagem de Natal e um convite para ajudar o Recanto Luiz Bertoli.
+        </p>
       </header>
+
 
       <section className="relative mx-auto w-full max-w-[680px] px-4">
         <div className="relative aspect-[3/4] w-full">
