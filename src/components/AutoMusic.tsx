@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useRef, useState } from "react";
-import { Music2, VolumeX } from "lucide-react";
+import { useEffect, useCallback, useRef, useState } from "react";
+import { VolumeX } from "lucide-react";
 import type { MusicController } from "@/lib/christmas-music";
 
 /**
@@ -101,7 +101,6 @@ export function AutoMusic() {
         <VolumeX className="h-4 w-4 text-muted-foreground" aria-hidden="true" />
       )}
       <span className="hidden sm:inline">{running ? "Música tocando" : "Música pausada"}</span>
-      <Music2 className="h-4 w-4 text-primary sm:hidden" aria-hidden="true" />
     </button>
   );
 }
