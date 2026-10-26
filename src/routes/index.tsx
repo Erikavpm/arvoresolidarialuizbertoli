@@ -189,7 +189,11 @@ function Index() {
         <p className="mt-3 text-foreground/85">A Árvore de Natal Solidária convida você a transformar o espírito natalino em gesto. Cada enfeite guarda uma mensagem — e um convite para contribuir espontaneamente com o Recanto Luiz Bertoli.</p>
         <div className="mt-6 rounded-2xl border border-primary/20 bg-card p-5 text-sm text-foreground/80 shadow-sm">
           <p className="font-semibold text-foreground">Recanto Luiz Bertoli</p>
-          <p className="mt-1 italic">[Texto institucional oficial a ser inserido pela organização.]</p>
+          <p className="mt-1 italic">NATAL SOLIDÁRIO – RECANTO LUIZ BERTOLI 
+Neste Natal, queremos multiplicar o amor e espalhar esperança! 
+Cada gesto de solidariedade transforma vidas e faz florescer sorrisos.
+Juntos, podemos tornar o Natal dos nossos idosos mais especial, levando carinho, alegria e amor!
+Neste Natal, doe amor. Compartilhe esperança. Faça a diferença!</p>
         </div>
         <p className="mt-6 text-xs text-muted-foreground">A doação é feita diretamente pelo aplicativo do seu banco, via Pix. Este site não coleta dados pessoais.</p>
       </section>
