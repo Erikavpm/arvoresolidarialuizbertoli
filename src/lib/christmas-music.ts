@@ -100,7 +100,7 @@ const SECTIONS: Section[] = [
       ["A4", 1], ["A4", 1], ["C5", 1], ["B4", 1], ["A4", 1], ["G4", 1],
       ["A4", 1], ["G4", 1], ["E5", 3],
       ["D5", 1], ["D5", 1], ["F5", 1], ["D5", 1], ["B4", 1], ["C5", 3],
-      ["C5", 1], ["G4", 1], ["E5", 1], ["G4", 1], ["F4", 1], ["D4", 1], ["C4", 3],
+      ["C5", 1], ["G4", 1], ["E5", 1], ["G4", 1], ["F4", 1], ["D4", 1], ["C4", 2],
     ],
     chords: [
       ["C3", "maj", 3], ["C3", "maj", 3], ["C3", "maj", 3], ["C3", "maj", 3],
@@ -278,7 +278,7 @@ function pad(ctx: AudioContext, dest: AudioNode, freq: number, t: number, dur: n
 
   const gain = ctx.createGain();
   const attack = 0.16;
-  const hold = Math.max(attack + 0.05, dur);
+  const hold = t + Math.max(attack + 0.05, dur);
   gain.gain.setValueAtTime(0, t);
   gain.gain.linearRampToValueAtTime(vel, t + attack);
   gain.gain.setValueAtTime(vel, hold);
@@ -472,7 +472,8 @@ export function createChristmasMusic(options: MusicOptions = {}): MusicControlle
     master!.gain.setValueAtTime(Math.max(master!.gain.value, 0.0001), audio.currentTime);
     master!.gain.linearRampToValueAtTime(VOLUME, audio.currentTime + 0.9);
     if (timer === null) {
-      loopAt = audio.currentTime + 0.2;
+      // Retoma exatamente de onde parou: o próximo evento deve cair "agora".
+      loopAt = audio.currentTime + 0.2 - events[index].t;
       timer = setInterval(tick, TICK);
       tick();
     }
