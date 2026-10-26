@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
+import { MusicToggle } from "@/components/MusicToggle";
 
 
 export const Route = createFileRoute("/")({
