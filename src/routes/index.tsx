@@ -104,7 +104,7 @@ function Index() {
         ))}
       </div>
 
-      <header className="relative pt-8 text-center">
+      <header className="relative pt-14 text-center sm:pt-24">
 
         <h1 className="mt-2 px-4 font-display text-7xl leading-[1.1] text-primary sm:text-9xl">Natal Solidário</h1>
         <p className="mt-1 px-4 text-base font-semibold uppercase tracking-[0.28em] text-muted-foreground sm:text-2xl">
