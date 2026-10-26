@@ -24,8 +24,9 @@ const SEMITONES: Record<string, number> = {
 };
 
 function midiOf(name: string): number {
-  const letter = /^([A-G]#?)(-?\d)$/.exec(name)?.[1];
-  const octave = /^([A-G]#?)(-?\d)$/.exec(name)?.[2];
+  const match = /^([A-G]#?)(-?\d)$/.exec(name);
+  const letter = match?.[1];
+  const octave = match?.[2];
   const semitone = letter === undefined ? undefined : SEMITONES[letter];
   if (semitone === undefined || octave === undefined) throw new Error(`Nota inválida: ${name}`);
   return (Number(octave) + 1) * 12 + semitone;
