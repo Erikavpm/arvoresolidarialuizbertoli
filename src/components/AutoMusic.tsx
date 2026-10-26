@@ -55,8 +55,6 @@ export function AutoMusic() {
   }, [start]);
 
   useEffect(() => {
-    let disposed = false;
-
     function onGesture() {
       void start();
     }
@@ -83,7 +81,6 @@ export function AutoMusic() {
       for (const name of GESTURES) window.removeEventListener(name, onGesture);
       document.removeEventListener("visibilitychange", onVisibility);
       controllerRef.current?.stop();
-      void disposed;
     };
   }, [start]);
 
