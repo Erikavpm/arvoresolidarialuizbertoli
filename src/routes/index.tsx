@@ -114,10 +114,10 @@ function Index() {
           width={844}
           height={445}
           draggable={false}
-          className="mx-auto mb-4 w-64 select-none drop-shadow-[0_6px_18px_oklch(0.4_0.06_245/0.16)] sm:mb-4 sm:w-96"
+          className="mx-auto mb-8 w-52 select-none drop-shadow-[0_6px_18px_oklch(0.4_0.06_245/0.16)] sm:mb-10 sm:w-80"
         />
 
-        <h1 className="mt-2 px-4 font-display text-7xl leading-[1.1] text-primary sm:text-9xl">Natal Solidário</h1>
+        <h1 className="mt-6 px-4 font-display text-7xl leading-[1.1] text-primary sm:text-9xl">Natal Solidário</h1>
         <p className="mt-1 px-4 text-base font-semibold uppercase tracking-[0.28em] text-muted-foreground sm:text-2xl">
           Árvore de Natal Solidária 2026
         </p>
