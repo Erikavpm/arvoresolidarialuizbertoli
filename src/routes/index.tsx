@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
+import bannerAsset from "@/assets/banner-01.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -64,10 +65,15 @@ function Index() {
         ))}
       </div>
 
-      <header className="relative px-6 pt-10 text-center">
-        <p className="text-xs uppercase tracking-[0.3em] text-gold">Campanha de Natal</p>
-        <h1 className="mt-2 font-display text-4xl font-semibold sm:text-6xl">Árvore de Natal Solidária <span className="text-gold">2026</span></h1>
-        <p className="mx-auto mt-3 max-w-md text-sm text-foreground/80">Toque em um enfeite para receber uma mensagem e ajudar o Recanto Luiz Bertoli.</p>
+      <header className="relative text-center">
+        <img
+          src={bannerAsset.url}
+          alt="Natal Solidário — Recanto Luiz Bertoli, Rede Madre"
+          className="mx-auto w-full max-w-3xl shadow-[0_20px_60px_-20px_oklch(0_0_0/0.6)] sm:rounded-b-3xl"
+        />
+        <p className="mt-6 text-xs uppercase tracking-[0.3em] text-gold">Campanha de Natal</p>
+        <h1 className="mt-2 px-6 font-display text-4xl font-semibold sm:text-6xl">Árvore de Natal Solidária <span className="text-gold">2026</span></h1>
+        <p className="mx-auto mt-3 max-w-md px-6 text-sm text-foreground/80">Toque em um enfeite para receber uma mensagem e ajudar o Recanto Luiz Bertoli.</p>
       </header>
 
       <section className="relative mx-auto w-full max-w-[520px] px-4">
