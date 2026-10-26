@@ -130,7 +130,7 @@ function Index() {
 
 
       <section className="relative mx-auto w-full max-w-[680px] px-4">
-        <div className="relative aspect-[3/4] w-full">
+        <div className="@container relative aspect-[3/4] w-full">
           <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="absolute inset-0 h-full w-full" aria-hidden>
             <defs>
               <linearGradient id="pineGrad" x1="0" y1="0" x2="0" y2="1">
@@ -168,13 +168,13 @@ function Index() {
           ))}
           {ORNAMENTS.map((orn, i) => (
             <button key={i} onClick={() => setOpen(i)} aria-label={`Abrir enfeite: ${orn.title}`}
-              className="sway absolute -translate-x-1/2 rounded-full p-1 transition-transform hover:scale-125 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+              className="sway absolute -translate-x-1/2 rounded-full transition-transform hover:scale-125 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
               style={{ left: `${orn.x}%`, top: `${orn.y}%`, animationDelay: `${i * 0.25}s` }}>
-              <span className="mx-auto block h-1.5 w-2 rounded-sm bg-gold" />
+              <span className="mx-auto block rounded-sm bg-gold" style={{ width: "1.4cqw", height: "1cqw" }} />
               <span className="block rounded-full shadow-[inset_-4px_-4px_8px_oklch(0_0_0/0.3),0_2px_10px_oklch(0_0_0/0.2)]"
                 style={{
-                  width: `calc(2.25rem * ${orn.size})`,
-                  height: `calc(2.25rem * ${orn.size})`,
+                  width: `calc(5.3cqw * ${orn.size})`,
+                  height: `calc(5.3cqw * ${orn.size})`,
                   background: `radial-gradient(circle at 35% 30%, oklch(1 0 0 / .8), ${orn.color} 40%)`,
                 }} />
             </button>
