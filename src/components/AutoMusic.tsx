@@ -1,5 +1,6 @@
 import { useEffect, useCallback, useRef, useState } from "react";
 import { VolumeX } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import type { MusicController } from "@/lib/christmas-music";
 
 /**
@@ -27,26 +28,37 @@ async function load(): Promise<MusicController | null> {
 export function AutoMusic() {
   const [running, setRunning] = useState(false);
   const controllerRef = useRef<MusicController | null>(null);
+  const loadingRef = useRef<Promise<MusicController | null> | null>(null);
+  const startingRef = useRef(false);
+  const mountedRef = useRef(false);
   const pausedRef = useRef(false);
 
   const start = useCallback(async () => {
-    if (pausedRef.current) return;
-    const audio = controllerRef.current ?? (await load());
-    if (audio === null) return;
-    controllerRef.current = audio;
+    if (pausedRef.current || startingRef.current || controllerRef.current?.isRunning()) return;
+    startingRef.current = true;
     try {
+      loadingRef.current ??= load();
+      const audio = controllerRef.current ?? (await loadingRef.current);
+      if (audio === null || pausedRef.current || !mountedRef.current || document.hidden) return;
+      controllerRef.current = audio;
       await audio.start();
+      if (pausedRef.current || !mountedRef.current || document.hidden) {
+        audio.stop();
+        return;
+      }
+      setRunning(audio.isRunning());
     } catch {
       return;
+    } finally {
+      startingRef.current = false;
     }
-    if (audio.isRunning() && !pausedRef.current) setRunning(true);
   }, []);
 
   const toggle = useCallback(() => {
     const audio = controllerRef.current;
-    if (audio && audio.isRunning()) {
+    if (!pausedRef.current && (startingRef.current || audio?.isPlaying())) {
       pausedRef.current = true;
-      audio.stop();
+      audio?.stop();
       setRunning(false);
     } else {
       pausedRef.current = false;
@@ -55,14 +67,18 @@ export function AutoMusic() {
   }, [start]);
 
   useEffect(() => {
-    function onGesture() {
+    mountedRef.current = true;
+    function onGesture(event: Event) {
+      // The control's own gesture must not restart playback before its click.
+      if (event.target instanceof Element && event.target.closest('[data-music-control]')) return;
       void start();
     }
 
     function onVisibility() {
       const audio = controllerRef.current;
       if (document.hidden) {
-        if (audio?.isRunning()) audio.stop();
+        audio?.stop();
+        setRunning(false);
       } else if (!pausedRef.current) {
         void start();
       }
@@ -77,6 +93,7 @@ export function AutoMusic() {
     document.addEventListener("visibilitychange", onVisibility);
 
     return () => {
+      mountedRef.current = false;
       for (const name of GESTURES) window.removeEventListener(name, onGesture);
       document.removeEventListener("visibilitychange", onVisibility);
       controllerRef.current?.stop();
@@ -84,12 +101,14 @@ export function AutoMusic() {
   }, [start]);
 
   return (
-    <button
+    <Button
+      variant="outline"
+      data-music-control
       type="button"
       onClick={toggle}
       aria-pressed={running}
       aria-label={running ? "Pausar música de Natal" : "Tocar música de Natal"}
-      className="fixed bottom-4 right-4 z-50 flex items-center gap-2 rounded-full border border-primary/20 bg-card/90 px-4 py-3 text-sm font-semibold text-foreground shadow-lg backdrop-blur transition hover:bg-card focus-visible:outline-2 focus-visible:outline-primary/60"
+      className="fixed bottom-4 right-4 z-50 flex h-auto items-center gap-2 rounded-full border border-primary/20 bg-card/90 px-4 py-3 text-sm font-semibold text-foreground shadow-lg backdrop-blur transition hover:bg-card focus-visible:outline-2 focus-visible:outline-primary/60"
     >
       {running ? (
         <span className="flex h-4 items-end gap-[3px]" aria-hidden="true">
@@ -101,6 +120,6 @@ export function AutoMusic() {
         <VolumeX className="h-4 w-4 text-muted-foreground" aria-hidden="true" />
       )}
       <span className="hidden sm:inline">{running ? "Música tocando" : "Música pausada"}</span>
-    </button>
+    </Button>
   );
 }

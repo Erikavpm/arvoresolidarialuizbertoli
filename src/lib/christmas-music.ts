@@ -389,6 +389,7 @@ export function createChristmasMusic(options: MusicOptions = {}): MusicControlle
   let loopAt = 0;
   let index = 0;
   let playing = false;
+  let playbackRequest = 0;
   let title = "";
 
   function titleAt(t: number): string {
@@ -451,13 +452,14 @@ export function createChristmasMusic(options: MusicOptions = {}): MusicControlle
   }
 
   function schedule(e: Planned, at: number) {
-    const audio = ctx!;
-    const dest = bus!;
+    const audio = ctx;
+    const dest = bus;
+    if (!audio || !dest || !noise) return;
     const when = Math.max(at, audio.currentTime + 0.01);
     if (e.voice === "bell") bell(audio, dest, e.freq, when, e.dur, e.vel);
     else if (e.voice === "pad") pad(audio, dest, e.freq, when, e.dur, e.vel);
     else if (e.voice === "bass") bass(audio, dest, e.freq, when, e.dur, e.vel);
-    else sleigh(audio, dest, noise!, when, e.vel);
+    else sleigh(audio, dest, noise, when, e.vel);
   }
 
   function tick() {
@@ -479,11 +481,18 @@ export function createChristmasMusic(options: MusicOptions = {}): MusicControlle
 
   async function start() {
     ensure();
-    const audio = ctx!;
+    const audio = ctx;
+    const output = master;
+    if (!audio || !output) return;
+    const request = ++playbackRequest;
     await audio.resume();
-    master!.gain.cancelScheduledValues(audio.currentTime);
-    master!.gain.setValueAtTime(Math.max(master!.gain.value, 0.0001), audio.currentTime);
-    master!.gain.linearRampToValueAtTime(volume, audio.currentTime + 0.9);
+    if (request !== playbackRequest) {
+      if (!playing) await audio.suspend();
+      return;
+    }
+    output.gain.cancelScheduledValues(audio.currentTime);
+    output.gain.setValueAtTime(Math.max(output.gain.value, 0.0001), audio.currentTime);
+    output.gain.linearRampToValueAtTime(volume, audio.currentTime + 0.9);
     if (timer === null) {
       // Retoma exatamente de onde parou: o próximo evento deve cair "agora".
       loopAt = audio.currentTime + 0.2 - (events[index]?.t ?? 0);
@@ -494,19 +503,17 @@ export function createChristmasMusic(options: MusicOptions = {}): MusicControlle
   }
 
   function stop() {
+    playbackRequest += 1;
+    playing = false;
     const audio = ctx;
     if (!audio || !master) return;
     master.gain.cancelScheduledValues(audio.currentTime);
-    master.gain.setValueAtTime(master.gain.value, audio.currentTime);
-    master.gain.linearRampToValueAtTime(0, audio.currentTime + 0.35);
+    master.gain.setValueAtTime(0, audio.currentTime);
     if (timer !== null) {
       clearInterval(timer);
       timer = null;
     }
-    playing = false;
-    window.setTimeout(() => {
-      if (!playing && ctx && ctx.state === "running") void ctx.suspend();
-    }, 400);
+    void audio.suspend();
   }
 
   return {
