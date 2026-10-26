@@ -77,7 +77,6 @@ export function AutoMusic() {
     document.addEventListener("visibilitychange", onVisibility);
 
     return () => {
-      disposed = true;
       for (const name of GESTURES) window.removeEventListener(name, onGesture);
       document.removeEventListener("visibilitychange", onVisibility);
       controllerRef.current?.stop();
