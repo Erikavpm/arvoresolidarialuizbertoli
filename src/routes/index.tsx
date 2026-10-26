@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { AutoMusic } from "@/components/AutoMusic";
+import logoRecanto from "@/assets/logo-recanto-official.png.asset.json";
 
 
 export const Route = createFileRoute("/")({
@@ -106,7 +107,15 @@ function Index() {
         ))}
       </div>
 
-      <header className="relative pt-14 text-center sm:pt-24">
+      <header className="relative pt-14 text-center sm:pt-20">
+        <img
+          src={logoRecanto.url}
+          alt="Recanto Luiz Bertoli"
+          width={1176}
+          height={801}
+          draggable={false}
+          className="mx-auto mb-3 w-44 select-none drop-shadow-[0_6px_18px_oklch(0.4_0.06_245/0.16)] sm:mb-5 sm:w-60"
+        />
 
         <h1 className="mt-2 px-4 font-display text-7xl leading-[1.1] text-primary sm:text-9xl">Natal Solidário</h1>
         <p className="mt-1 px-4 text-base font-semibold uppercase tracking-[0.28em] text-muted-foreground sm:text-2xl">
