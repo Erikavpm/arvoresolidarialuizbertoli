@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import logoRecanto from "@/assets/logo-recanto.png";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -105,11 +105,7 @@ function Index() {
       </div>
 
       <header className="relative pt-8 text-center">
-        <img
-          src={logoRecanto}
-          alt="Recanto Luiz Bertoli — Rede Madre"
-          className="mx-auto w-56 sm:w-72"
-        />
+
         <h1 className="mt-2 px-4 font-display text-7xl leading-[1.1] text-primary sm:text-9xl">Natal Solidário</h1>
         <p className="mt-1 px-4 text-base font-semibold uppercase tracking-[0.28em] text-muted-foreground sm:text-2xl">
           Árvore de Natal Solidária 2026
