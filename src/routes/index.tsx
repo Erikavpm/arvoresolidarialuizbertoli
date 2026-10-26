@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import bannerAsset from "@/assets/banner-01.png.asset.json";
+import logoRecanto from "@/assets/logo-recanto.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -25,48 +25,56 @@ type Ornament = { x: number; y: number; size: number; color: string; title: stri
 const GOLD = "var(--gold)";
 const BERRY = "var(--berry)";
 const SNOW = "var(--snow)";
-const CHAMPAGNE = "oklch(0.88 0.08 95)";
+const BLUE = "var(--primary)";
 
 const ORNAMENTS: Ornament[] = [
-  { x: 50, y: 16, size: 1.1, color: GOLD, title: "Esperança", msg: "Que a luz do Natal acenda esperança em cada coração." },
-  { x: 44, y: 24, size: 0.9, color: BERRY, title: "Amor", msg: "O amor é o presente mais bonito que podemos oferecer." },
-  { x: 57, y: 27, size: 1.0, color: SNOW, title: "Paz", msg: "Que a paz deste Natal permaneça com você o ano inteiro." },
-  { x: 38, y: 33, size: 0.85, color: CHAMPAGNE, title: "Fé", msg: "A fé ilumina os caminhos mesmo nas noites mais escuras." },
-  { x: 50, y: 35, size: 1.15, color: BERRY, title: "Gratidão", msg: "Agradecer é reconhecer as bênçãos que nos cercam." },
-  { x: 62, y: 36, size: 0.9, color: GOLD, title: "Solidariedade", msg: "Um pequeno gesto pode transformar o Natal de alguém." },
-  { x: 31, y: 42, size: 1.0, color: SNOW, title: "União", msg: "Juntos, fazemos o Natal ficar ainda mais iluminado." },
-  { x: 43, y: 44, size: 0.85, color: GOLD, title: "Carinho", msg: "Cuidar de quem precisa é a essência do Natal." },
-  { x: 56, y: 45, size: 1.1, color: CHAMPAGNE, title: "Alegria", msg: "Que a alegria desta data se multiplique em sorrisos." },
-  { x: 68, y: 46, size: 0.9, color: BERRY, title: "Generosidade", msg: "Dar de coração é o maior presente que existe." },
-  { x: 25, y: 52, size: 0.95, color: BERRY, title: "Compaixão", msg: "Enxergar o outro com carinho muda o mundo ao redor." },
-  { x: 37, y: 53, size: 1.1, color: SNOW, title: "Luz", msg: "Cada gesto de bondade é uma luz que se acende." },
-  { x: 50, y: 54, size: 0.9, color: GOLD, title: "Renovação", msg: "O Natal renova forças para recomeçar com o coração aberto." },
-  { x: 62, y: 55, size: 1.0, color: CHAMPAGNE, title: "Partilha", msg: "Dividir o que temos multiplica o que somos." },
-  { x: 73, y: 56, size: 0.85, color: SNOW, title: "Ternura", msg: "Nos pequenos cuidados moram os grandes afetos." },
-  { x: 20, y: 62, size: 0.9, color: GOLD, title: "Bondade", msg: "A bondade não faz barulho, mas ilumina tudo." },
-  { x: 32, y: 63, size: 1.05, color: CHAMPAGNE, title: "Família", msg: "Que nenhum coração passe este Natal se sentindo sozinho." },
-  { x: 44, y: 64, size: 0.9, color: BERRY, title: "Acolhimento", msg: "Acolher é abrir as portas do coração para quem precisa." },
-  { x: 57, y: 65, size: 1.1, color: SNOW, title: "Sonho", msg: "Todo sonho compartilhado ganha força para se realizar." },
-  { x: 69, y: 66, size: 0.95, color: GOLD, title: "Respeito", msg: "Cuidar de quem viveu tanto é honrar a própria história." },
-  { x: 79, y: 67, size: 0.85, color: BERRY, title: "Presença", msg: "Estar presente é o abraço que não precisa de palavras." },
-  { x: 16, y: 73, size: 0.95, color: SNOW, title: "Gentileza", msg: "Uma gentileza por dia deixa o ano inteiro mais leve." },
-  { x: 28, y: 74, size: 1.1, color: BERRY, title: "Coragem", msg: "Há coragem silenciosa em cada vida que inspira a nossa." },
-  { x: 40, y: 75, size: 0.9, color: CHAMPAGNE, title: "Memória", msg: "Cada história de vida merece ser ouvida e celebrada." },
-  { x: 53, y: 76, size: 1.05, color: GOLD, title: "Comunidade", msg: "Quando uma comunidade se une, ninguém fica para trás." },
-  { x: 65, y: 77, size: 0.9, color: SNOW, title: "Cuidado", msg: "Cuidar é a forma mais bonita de dizer: você importa." },
-  { x: 76, y: 78, size: 1.0, color: CHAMPAGNE, title: "Sorriso", msg: "Um sorriso sincero é o enfeite mais bonito do Natal." },
-  { x: 22, y: 82, size: 0.9, color: GOLD, title: "Dignidade", msg: "Todo gesto de apoio devolve dignidade e esperança." },
-  { x: 35, y: 83, size: 1.0, color: SNOW, title: "Harmonia", msg: "Que a harmonia deste Natal ecoe durante todo o ano." },
-  { x: 48, y: 84, size: 0.85, color: BERRY, title: "Futuro", msg: "Plantar amor hoje é colher um amanhã mais humano." },
-  { x: 61, y: 85, size: 1.05, color: GOLD, title: "Bênção", msg: "Que cada doação volte em bênçãos para quem doou." },
-  { x: 73, y: 84, size: 0.9, color: BERRY, title: "Coração", msg: "Neste Natal, deixe o coração escolher o caminho do bem." },
+  { x: 50, y: 17, size: 1.1, color: GOLD, title: "Esperança", msg: "Que a luz do Natal acenda esperança em cada coração." },
+  { x: 44, y: 25, size: 0.9, color: BERRY, title: "Amor", msg: "O amor é o presente mais bonito que podemos oferecer." },
+  { x: 57, y: 28, size: 1.0, color: BLUE, title: "Paz", msg: "Que a paz deste Natal permaneça com você o ano inteiro." },
+  { x: 38, y: 34, size: 0.85, color: SNOW, title: "Fé", msg: "A fé ilumina os caminhos mesmo nas noites mais escuras." },
+  { x: 50, y: 36, size: 1.15, color: BERRY, title: "Gratidão", msg: "Agradecer é reconhecer as bênçãos que nos cercam." },
+  { x: 62, y: 37, size: 0.9, color: GOLD, title: "Solidariedade", msg: "Um pequeno gesto pode transformar o Natal de alguém." },
+  { x: 31, y: 43, size: 1.0, color: BLUE, title: "União", msg: "Juntos, fazemos o Natal ficar ainda mais iluminado." },
+  { x: 43, y: 45, size: 0.85, color: GOLD, title: "Carinho", msg: "Cuidar de quem precisa é a essência do Natal." },
+  { x: 56, y: 46, size: 1.1, color: SNOW, title: "Alegria", msg: "Que a alegria desta data se multiplique em sorrisos." },
+  { x: 68, y: 47, size: 0.9, color: BERRY, title: "Generosidade", msg: "Dar de coração é o maior presente que existe." },
+  { x: 25, y: 53, size: 0.95, color: BERRY, title: "Compaixão", msg: "Enxergar o outro com carinho muda o mundo ao redor." },
+  { x: 37, y: 54, size: 1.1, color: BLUE, title: "Luz", msg: "Cada gesto de bondade é uma luz que se acende." },
+  { x: 50, y: 55, size: 0.9, color: GOLD, title: "Renovação", msg: "O Natal renova forças para recomeçar com o coração aberto." },
+  { x: 62, y: 56, size: 1.0, color: SNOW, title: "Partilha", msg: "Dividir o que temos multiplica o que somos." },
+  { x: 73, y: 57, size: 0.85, color: BLUE, title: "Ternura", msg: "Nos pequenos cuidados moram os grandes afetos." },
+  { x: 20, y: 63, size: 0.9, color: GOLD, title: "Bondade", msg: "A bondade não faz barulho, mas ilumina tudo." },
+  { x: 32, y: 64, size: 1.05, color: SNOW, title: "Família", msg: "Que nenhum coração passe este Natal se sentindo sozinho." },
+  { x: 44, y: 65, size: 0.9, color: BERRY, title: "Acolhimento", msg: "Acolher é abrir as portas do coração para quem precisa." },
+  { x: 57, y: 66, size: 1.1, color: BLUE, title: "Sonho", msg: "Todo sonho compartilhado ganha força para se realizar." },
+  { x: 69, y: 67, size: 0.95, color: GOLD, title: "Respeito", msg: "Cuidar de quem viveu tanto é honrar a própria história." },
+  { x: 79, y: 68, size: 0.85, color: BERRY, title: "Presença", msg: "Estar presente é o abraço que não precisa de palavras." },
+  { x: 16, y: 74, size: 0.95, color: BLUE, title: "Gentileza", msg: "Uma gentileza por dia deixa o ano inteiro mais leve." },
+  { x: 28, y: 75, size: 1.1, color: BERRY, title: "Coragem", msg: "Há coragem silenciosa em cada vida que inspira a nossa." },
+  { x: 40, y: 76, size: 0.9, color: SNOW, title: "Memória", msg: "Cada história de vida merece ser ouvida e celebrada." },
+  { x: 53, y: 77, size: 1.05, color: GOLD, title: "Comunidade", msg: "Quando uma comunidade se une, ninguém fica para trás." },
+  { x: 65, y: 78, size: 0.9, color: BLUE, title: "Cuidado", msg: "Cuidar é a forma mais bonita de dizer: você importa." },
+  { x: 76, y: 79, size: 1.0, color: SNOW, title: "Sorriso", msg: "Um sorriso sincero é o enfeite mais bonito do Natal." },
+  { x: 22, y: 83, size: 0.9, color: GOLD, title: "Dignidade", msg: "Todo gesto de apoio devolve dignidade e esperança." },
+  { x: 35, y: 84, size: 1.0, color: BLUE, title: "Harmonia", msg: "Que a harmonia deste Natal ecoe durante todo o ano." },
+  { x: 48, y: 85, size: 0.85, color: BERRY, title: "Futuro", msg: "Plantar amor hoje é colher um amanhã mais humano." },
+  { x: 61, y: 86, size: 1.05, color: GOLD, title: "Bênção", msg: "Que cada doação volte em bênçãos para quem doou." },
+  { x: 73, y: 85, size: 0.9, color: BERRY, title: "Coração", msg: "Neste Natal, deixe o coração escolher o caminho do bem." },
 ];
 
-const LIGHTS = Array.from({ length: 34 }, (_, i) => {
-  const y = 16 + (i / 34) * 70;
-  const half = ((y - 8) / 82) * 38;
+const LIGHTS = Array.from({ length: 40 }, (_, i) => {
+  const y = 17 + (i / 40) * 70;
+  const half = ((y - 8) / 84) * 38;
   return { y, x: 50 + Math.sin(i * 1.9) * half * 0.88, d: (i % 5) * 0.4 };
 });
+
+// Camadas da árvore: galhos curvos com neve no topo
+const LAYERS = [
+  { top: 10, half: 16, bottom: 36 },
+  { top: 22, half: 24, bottom: 54 },
+  { top: 36, half: 31, bottom: 70 },
+  { top: 52, half: 38, bottom: 88 },
+];
 
 function Index() {
   const [open, setOpen] = useState<number | null>(null);
@@ -74,7 +82,7 @@ function Index() {
   const [flakes, setFlakes] = useState<{ l: number; d: number; s: number; delay: number }[]>([]);
 
   useEffect(() => {
-    setFlakes(Array.from({ length: 30 }, () => ({ l: Math.random() * 100, d: 8 + Math.random() * 10, s: 2 + Math.random() * 4, delay: -Math.random() * 15 })));
+    setFlakes(Array.from({ length: 60 }, () => ({ l: Math.random() * 100, d: 8 + Math.random() * 10, s: 2 + Math.random() * 4, delay: -Math.random() * 15 })));
   }, []);
   useEffect(() => {
     const k = (e: KeyboardEvent) => e.key === "Escape" && setOpen(null);
@@ -91,30 +99,53 @@ function Index() {
     <main className="relative overflow-hidden">
       <div aria-hidden className="pointer-events-none fixed inset-0">
         {flakes.map((f, i) => (
-          <span key={i} className="snowflake absolute -top-4 rounded-full bg-snow/70"
+          <span key={i} className="snowflake absolute -top-4 rounded-full bg-primary/30"
             style={{ left: `${f.l}%`, width: f.s, height: f.s, animationDuration: `${f.d}s`, animationDelay: `${f.delay}s` }} />
         ))}
       </div>
 
-      <header className="relative text-center">
+      <header className="relative pt-8 text-center">
         <img
-          src={bannerAsset.url}
-          alt="Natal Solidário — Recanto Luiz Bertoli, Rede Madre"
-          className="block w-full"
+          src={logoRecanto}
+          alt="Recanto Luiz Bertoli — Rede Madre"
+          className="mx-auto w-56 sm:w-72"
         />
-        <p className="mt-8 text-xs uppercase tracking-[0.3em] text-gold">Campanha de Natal</p>
-        <h1 className="mt-2 px-6 font-display text-4xl font-semibold sm:text-6xl">Árvore de Natal Solidária <span className="text-gold">2026</span></h1>
-        <p className="mx-auto mt-3 max-w-md px-6 text-sm text-foreground/80">Toque em um enfeite para receber uma mensagem e ajudar o Recanto Luiz Bertoli.</p>
+        <h1 className="mt-4 px-6 font-display text-6xl text-primary sm:text-7xl">Natal Solidário</h1>
+        <p className="mt-1 text-xs font-semibold uppercase tracking-[0.35em] text-muted-foreground">Árvore de Natal Solidária 2026</p>
+        <p className="mx-auto mt-3 max-w-md px-6 text-sm text-foreground/75">Toque em um enfeite para receber uma mensagem e ajudar o Recanto Luiz Bertoli.</p>
       </header>
 
       <section className="relative mx-auto w-full max-w-[680px] px-4">
         <div className="relative aspect-[3/4] w-full">
           <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="absolute inset-0 h-full w-full" aria-hidden>
-            <polygon points="50,8 68,34 32,34" fill="var(--pine)" />
-            <polygon points="50,20 78,56 22,56" fill="var(--pine)" />
-            <polygon points="50,36 88,88 12,88" fill="var(--pine)" />
-            <polygon points="50,8 50,88 12,88 22,56 32,34" fill="var(--pine-dark)" opacity=".45" />
-            <rect x="44" y="88" width="12" height="9" fill="oklch(0.4 0.06 50)" />
+            <defs>
+              <linearGradient id="pineGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="var(--pine)" />
+                <stop offset="100%" stopColor="var(--pine-dark)" />
+              </linearGradient>
+            </defs>
+            {/* tronco */}
+            <rect x="45" y="86" width="10" height="10" rx="1.5" fill="oklch(0.45 0.07 60)" />
+            {/* camadas de galhos com curvas suaves */}
+            {LAYERS.map((L, i) => (
+              <g key={i}>
+                <path
+                  d={`M 50 ${L.top} Q ${50 + L.half * 0.55} ${L.top + (L.bottom - L.top) * 0.45} ${50 + L.half} ${L.bottom} Q 50 ${L.bottom - 4} ${50 - L.half} ${L.bottom} Q ${50 - L.half * 0.55} ${L.top + (L.bottom - L.top) * 0.45} 50 ${L.top} Z`}
+                  fill="url(#pineGrad)"
+                />
+                {/* neve no topo de cada camada */}
+                <path
+                  d={`M 50 ${L.top} Q ${50 + L.half * 0.55} ${L.top + (L.bottom - L.top) * 0.45} ${50 + L.half} ${L.bottom} Q ${50 + L.half * 0.55} ${L.bottom - 2} 50 ${L.top + 5} Q ${50 - L.half * 0.55} ${L.bottom - 2} ${50 - L.half} ${L.bottom} Q ${50 - L.half * 0.55} ${L.top + (L.bottom - L.top) * 0.45} 50 ${L.top} Z`}
+                  fill="var(--snow)"
+                  opacity="0.35"
+                />
+              </g>
+            ))}
+            {/* sombra lateral */}
+            <path d="M 50 10 L 50 88 L 12 88 Q 30 70 19 70 Q 32 52 26 54 Q 38 36 34 36 Q 44 24 50 10 Z" fill="var(--pine-dark)" opacity=".3" />
+            {/* chão de neve */}
+            <ellipse cx="50" cy="95" rx="42" ry="4.5" fill="var(--snow)" />
+            <ellipse cx="50" cy="94.5" rx="30" ry="3" fill="oklch(0.94 0.02 230)" opacity=".6" />
           </svg>
           <svg viewBox="0 0 24 24" className="twinkle absolute left-1/2 top-[1%] h-[9%] -translate-x-1/2 fill-gold drop-shadow-[0_0_12px_var(--gold)]" aria-hidden>
             <path d="M12 2l2.9 6.9L22 9.6l-5.5 4.8L18.2 22 12 18.3 5.8 22l1.7-7.6L2 9.6l7.1-.7z" />
@@ -125,10 +156,10 @@ function Index() {
           ))}
           {ORNAMENTS.map((orn, i) => (
             <button key={i} onClick={() => setOpen(i)} aria-label={`Abrir enfeite: ${orn.title}`}
-              className="sway absolute -translate-x-1/2 rounded-full p-1 transition-transform hover:scale-125 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+              className="sway absolute -translate-x-1/2 rounded-full p-1 transition-transform hover:scale-125 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
               style={{ left: `${orn.x}%`, top: `${orn.y}%`, animationDelay: `${i * 0.25}s` }}>
               <span className="mx-auto block h-1.5 w-2 rounded-sm bg-gold" />
-              <span className="block rounded-full shadow-[inset_-4px_-4px_8px_oklch(0_0_0/0.3),0_0_14px_oklch(1_0_0/0.25)]"
+              <span className="block rounded-full shadow-[inset_-4px_-4px_8px_oklch(0_0_0/0.3),0_2px_10px_oklch(0_0_0/0.2)]"
                 style={{
                   width: `calc(2.25rem * ${orn.size})`,
                   height: `calc(2.25rem * ${orn.size})`,
@@ -140,23 +171,23 @@ function Index() {
       </section>
 
       <section className="relative mx-auto max-w-2xl px-6 pb-16 text-center">
-        <h2 className="font-display text-3xl text-gold">Sobre a campanha</h2>
+        <h2 className="font-display text-5xl text-primary">Sobre a campanha</h2>
         <p className="mt-3 text-foreground/85">A Árvore de Natal Solidária convida você a transformar o espírito natalino em gesto. Cada enfeite guarda uma mensagem — e um convite para contribuir espontaneamente com o Recanto Luiz Bertoli.</p>
-        <div className="mt-6 rounded-2xl border border-gold/30 bg-secondary/60 p-5 text-sm text-foreground/80">
+        <div className="mt-6 rounded-2xl border border-primary/20 bg-card p-5 text-sm text-foreground/80 shadow-sm">
           <p className="font-semibold text-foreground">Recanto Luiz Bertoli</p>
           <p className="mt-1 italic">[Texto institucional oficial a ser inserido pela organização.]</p>
         </div>
-        <p className="mt-6 text-xs text-foreground/60">A doação é feita diretamente pelo aplicativo do seu banco, via Pix. Este site não coleta dados pessoais.</p>
+        <p className="mt-6 text-xs text-muted-foreground">A doação é feita diretamente pelo aplicativo do seu banco, via Pix. Este site não coleta dados pessoais.</p>
       </section>
 
       {o && (
-        <div className="fixed inset-0 z-50 flex items-end justify-center bg-background/70 p-3 backdrop-blur-sm animate-in fade-in sm:items-center"
+        <div className="fixed inset-0 z-50 flex items-end justify-center bg-foreground/40 p-3 backdrop-blur-sm animate-in fade-in sm:items-center"
           onClick={() => setOpen(null)} role="dialog" aria-modal="true" aria-labelledby="orn-title">
           <div onClick={(e) => e.stopPropagation()}
             className="max-h-[92vh] w-full max-w-sm overflow-y-auto rounded-2xl bg-card p-6 text-center text-card-foreground shadow-2xl animate-in slide-in-from-bottom-6">
-            <p className="text-xs uppercase tracking-[0.25em] text-primary">Enfeite de Natal</p>
-            <h3 id="orn-title" className="mt-1 font-display text-3xl font-semibold">{o.title}</h3>
-            <p className="mt-3 font-display text-xl italic leading-snug">“{o.msg}”</p>
+            <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground">Enfeite de Natal</p>
+            <h3 id="orn-title" className="mt-1 font-display text-5xl text-primary">{o.title}</h3>
+            <p className="mt-3 text-lg italic leading-snug text-foreground/85">“{o.msg}”</p>
             <p className="mt-4 text-sm text-muted-foreground">Se desejar, contribua com o Recanto Luiz Bertoli pelo Pix:</p>
             <div className="mx-auto mt-3 flex aspect-square w-44 items-center justify-center rounded-xl border-2 border-dashed bg-muted text-xs text-muted-foreground">
               {PIX_QR_IMAGE ? <img src={PIX_QR_IMAGE} alt="QR Code Pix oficial" className="h-full w-full rounded-xl object-contain" /> : "QR Code Pix oficial (a inserir)"}
