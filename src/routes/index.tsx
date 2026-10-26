@@ -29,38 +29,38 @@ const SNOW = "var(--snow)";
 const BLUE = "var(--primary)";
 
 const ORNAMENTS: Ornament[] = [
-  { x: 50, y: 17, size: 1.1, color: GOLD, title: "Esperança", msg: "Que a luz do Natal acenda esperança em cada coração." },
-  { x: 44, y: 25, size: 0.9, color: BERRY, title: "Amor", msg: "O amor é o presente mais bonito que podemos oferecer." },
-  { x: 57, y: 28, size: 1.0, color: BLUE, title: "Paz", msg: "Que a paz deste Natal permaneça com você o ano inteiro." },
-  { x: 38, y: 34, size: 0.85, color: SNOW, title: "Fé", msg: "A fé ilumina os caminhos mesmo nas noites mais escuras." },
-  { x: 50, y: 36, size: 1.15, color: BERRY, title: "Gratidão", msg: "Agradecer é reconhecer as bênçãos que nos cercam." },
-  { x: 62, y: 37, size: 0.9, color: GOLD, title: "Solidariedade", msg: "Um pequeno gesto pode transformar o Natal de alguém." },
-  { x: 31, y: 43, size: 1.0, color: BLUE, title: "União", msg: "Juntos, fazemos o Natal ficar ainda mais iluminado." },
-  { x: 43, y: 45, size: 0.85, color: GOLD, title: "Carinho", msg: "Cuidar de quem precisa é a essência do Natal." },
-  { x: 56, y: 46, size: 1.1, color: SNOW, title: "Alegria", msg: "Que a alegria desta data se multiplique em sorrisos." },
-  { x: 68, y: 47, size: 0.9, color: BERRY, title: "Generosidade", msg: "Dar de coração é o maior presente que existe." },
-  { x: 25, y: 53, size: 0.95, color: BERRY, title: "Compaixão", msg: "Enxergar o outro com carinho muda o mundo ao redor." },
-  { x: 37, y: 54, size: 1.1, color: BLUE, title: "Luz", msg: "Cada gesto de bondade é uma luz que se acende." },
-  { x: 50, y: 55, size: 0.9, color: GOLD, title: "Renovação", msg: "O Natal renova forças para recomeçar com o coração aberto." },
-  { x: 62, y: 56, size: 1.0, color: SNOW, title: "Partilha", msg: "Dividir o que temos multiplica o que somos." },
-  { x: 73, y: 57, size: 0.85, color: BLUE, title: "Ternura", msg: "Nos pequenos cuidados moram os grandes afetos." },
-  { x: 20, y: 63, size: 0.9, color: GOLD, title: "Bondade", msg: "A bondade não faz barulho, mas ilumina tudo." },
-  { x: 32, y: 64, size: 1.05, color: SNOW, title: "Família", msg: "Que nenhum coração passe este Natal se sentindo sozinho." },
-  { x: 44, y: 65, size: 0.9, color: BERRY, title: "Acolhimento", msg: "Acolher é abrir as portas do coração para quem precisa." },
-  { x: 57, y: 66, size: 1.1, color: BLUE, title: "Sonho", msg: "Todo sonho compartilhado ganha força para se realizar." },
-  { x: 69, y: 67, size: 0.95, color: GOLD, title: "Respeito", msg: "Cuidar de quem viveu tanto é honrar a própria história." },
-  { x: 79, y: 68, size: 0.85, color: BERRY, title: "Presença", msg: "Estar presente é o abraço que não precisa de palavras." },
-  { x: 16, y: 74, size: 0.95, color: BLUE, title: "Gentileza", msg: "Uma gentileza por dia deixa o ano inteiro mais leve." },
-  { x: 28, y: 75, size: 1.1, color: BERRY, title: "Coragem", msg: "Há coragem silenciosa em cada vida que inspira a nossa." },
-  { x: 40, y: 76, size: 0.9, color: SNOW, title: "Memória", msg: "Cada história de vida merece ser ouvida e celebrada." },
-  { x: 53, y: 77, size: 1.05, color: GOLD, title: "Comunidade", msg: "Quando uma comunidade se une, ninguém fica para trás." },
-  { x: 65, y: 78, size: 0.9, color: BLUE, title: "Cuidado", msg: "Cuidar é a forma mais bonita de dizer: você importa." },
-  { x: 76, y: 79, size: 1.0, color: SNOW, title: "Sorriso", msg: "Um sorriso sincero é o enfeite mais bonito do Natal." },
-  { x: 22, y: 83, size: 0.9, color: GOLD, title: "Dignidade", msg: "Todo gesto de apoio devolve dignidade e esperança." },
-  { x: 35, y: 84, size: 1.0, color: BLUE, title: "Harmonia", msg: "Que a harmonia deste Natal ecoe durante todo o ano." },
-  { x: 48, y: 85, size: 0.85, color: BERRY, title: "Futuro", msg: "Plantar amor hoje é colher um amanhã mais humano." },
-  { x: 61, y: 86, size: 1.05, color: GOLD, title: "Bênção", msg: "Que cada doação volte em bênçãos para quem doou." },
-  { x: 73, y: 85, size: 0.9, color: BERRY, title: "Coração", msg: "Neste Natal, deixe o coração escolher o caminho do bem." },
+  { x: 50.0, y: 15.1, size: 1.1, color: GOLD, title: "Esperança", msg: "Que a luz do Natal acenda esperança em cada coração." },
+  { x: 42.7, y: 24.5, size: 0.9, color: BERRY, title: "Amor", msg: "O amor é o presente mais bonito que podemos oferecer." },
+  { x: 57.3, y: 24.3, size: 1.0, color: BLUE, title: "Paz", msg: "Que a paz deste Natal permaneça com você o ano inteiro." },
+  { x: 41.8, y: 34.6, size: 0.85, color: SNOW, title: "Fé", msg: "A fé ilumina os caminhos mesmo nas noites mais escuras." },
+  { x: 50.0, y: 34.0, size: 1.15, color: BERRY, title: "Gratidão", msg: "Agradecer é reconhecer as bênçãos que nos cercam." },
+  { x: 58.2, y: 34.5, size: 0.9, color: GOLD, title: "Solidariedade", msg: "Um pequeno gesto pode transformar o Natal de alguém." },
+  { x: 35.3, y: 43.3, size: 1.0, color: BLUE, title: "União", msg: "Juntos, fazemos o Natal ficar ainda mais iluminado." },
+  { x: 45.1, y: 43.6, size: 0.85, color: GOLD, title: "Carinho", msg: "Cuidar de quem precisa é a essência do Natal." },
+  { x: 54.9, y: 43.1, size: 1.1, color: SNOW, title: "Alegria", msg: "Que a alegria desta data se multiplique em sorrisos." },
+  { x: 64.7, y: 43.5, size: 0.9, color: BERRY, title: "Generosidade", msg: "Dar de coração é o maior presente que existe." },
+  { x: 34.8, y: 52.9, size: 0.95, color: BERRY, title: "Compaixão", msg: "Enxergar o outro com carinho muda o mundo ao redor." },
+  { x: 42.4, y: 52.6, size: 1.1, color: BLUE, title: "Luz", msg: "Cada gesto de bondade é uma luz que se acende." },
+  { x: 50.0, y: 53.0, size: 0.9, color: GOLD, title: "Renovação", msg: "O Natal renova forças para recomeçar com o coração aberto." },
+  { x: 57.6, y: 52.8, size: 1.0, color: SNOW, title: "Partilha", msg: "Dividir o que temos multiplica o que somos." },
+  { x: 65.2, y: 53.1, size: 0.85, color: BLUE, title: "Ternura", msg: "Nos pequenos cuidados moram os grandes afetos." },
+  { x: 26.2, y: 63.5, size: 0.9, color: GOLD, title: "Bondade", msg: "A bondade não faz barulho, mas ilumina tudo." },
+  { x: 35.7, y: 63.2, size: 1.05, color: SNOW, title: "Família", msg: "Que nenhum coração passe este Natal se sentindo sozinho." },
+  { x: 45.2, y: 63.5, size: 0.9, color: BERRY, title: "Acolhimento", msg: "Acolher é abrir as portas do coração para quem precisa." },
+  { x: 54.8, y: 63.1, size: 1.1, color: BLUE, title: "Sonho", msg: "Todo sonho compartilhado ganha força para se realizar." },
+  { x: 64.3, y: 63.4, size: 0.95, color: GOLD, title: "Respeito", msg: "Cuidar de quem viveu tanto é honrar a própria história." },
+  { x: 73.8, y: 63.6, size: 0.85, color: BERRY, title: "Presença", msg: "Estar presente é o abraço que não precisa de palavras." },
+  { x: 26.2, y: 74.4, size: 0.95, color: BLUE, title: "Gentileza", msg: "Uma gentileza por dia deixa o ano inteiro mais leve." },
+  { x: 35.7, y: 74.1, size: 1.1, color: BERRY, title: "Coragem", msg: "Há coragem silenciosa em cada vida que inspira a nossa." },
+  { x: 45.2, y: 74.5, size: 0.9, color: SNOW, title: "Memória", msg: "Cada história de vida merece ser ouvida e celebrada." },
+  { x: 54.8, y: 74.2, size: 1.05, color: GOLD, title: "Comunidade", msg: "Quando uma comunidade se une, ninguém fica para trás." },
+  { x: 64.3, y: 74.5, size: 0.9, color: BLUE, title: "Cuidado", msg: "Cuidar é a forma mais bonita de dizer: você importa." },
+  { x: 73.8, y: 74.3, size: 1.0, color: SNOW, title: "Sorriso", msg: "Um sorriso sincero é o enfeite mais bonito do Natal." },
+  { x: 18.6, y: 82.5, size: 0.9, color: GOLD, title: "Dignidade", msg: "Todo gesto de apoio devolve dignidade e esperança." },
+  { x: 34.3, y: 82.3, size: 1.0, color: BLUE, title: "Harmonia", msg: "Que a harmonia deste Natal ecoe durante todo o ano." },
+  { x: 50.0, y: 82.6, size: 0.85, color: BERRY, title: "Futuro", msg: "Plantar amor hoje é colher um amanhã mais humano." },
+  { x: 65.7, y: 82.2, size: 1.05, color: GOLD, title: "Bênção", msg: "Que cada doação volte em bênçãos para quem doou." },
+  { x: 81.4, y: 82.5, size: 0.9, color: BERRY, title: "Coração", msg: "Neste Natal, deixe o coração escolher o caminho do bem." },
 ];
 
 const LIGHTS = Array.from({ length: 40 }, (_, i) => {
@@ -130,7 +130,7 @@ function Index() {
 
 
       <section className="relative mx-auto w-full max-w-[680px] px-4">
-        <div className="relative aspect-[3/4] w-full">
+        <div className="@container relative aspect-[3/4] w-full">
           <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="absolute inset-0 h-full w-full" aria-hidden>
             <defs>
               <linearGradient id="pineGrad" x1="0" y1="0" x2="0" y2="1">
@@ -155,8 +155,6 @@ function Index() {
                 />
               </g>
             ))}
-            {/* sombra lateral */}
-            <path d="M 50 10 L 50 88 L 12 88 Q 30 70 19 70 Q 32 52 26 54 Q 38 36 34 36 Q 44 24 50 10 Z" fill="var(--pine-dark)" opacity=".3" />
             {/* chão de neve */}
             <ellipse cx="50" cy="95" rx="42" ry="4.5" fill="var(--snow)" />
             <ellipse cx="50" cy="94.5" rx="30" ry="3" fill="oklch(0.94 0.02 230)" opacity=".6" />
@@ -170,13 +168,13 @@ function Index() {
           ))}
           {ORNAMENTS.map((orn, i) => (
             <button key={i} onClick={() => setOpen(i)} aria-label={`Abrir enfeite: ${orn.title}`}
-              className="sway absolute -translate-x-1/2 rounded-full p-1 transition-transform hover:scale-125 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+              className="sway absolute -translate-x-1/2 rounded-full transition-transform hover:scale-125 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
               style={{ left: `${orn.x}%`, top: `${orn.y}%`, animationDelay: `${i * 0.25}s` }}>
-              <span className="mx-auto block h-1.5 w-2 rounded-sm bg-gold" />
+              <span className="mx-auto block rounded-sm bg-gold" style={{ width: "1.4cqw", height: "1cqw" }} />
               <span className="block rounded-full shadow-[inset_-4px_-4px_8px_oklch(0_0_0/0.3),0_2px_10px_oklch(0_0_0/0.2)]"
                 style={{
-                  width: `calc(2.25rem * ${orn.size})`,
-                  height: `calc(2.25rem * ${orn.size})`,
+                  width: `calc(5.3cqw * ${orn.size})`,
+                  height: `calc(5.3cqw * ${orn.size})`,
                   background: `radial-gradient(circle at 35% 30%, oklch(1 0 0 / .8), ${orn.color} 40%)`,
                 }} />
             </button>
