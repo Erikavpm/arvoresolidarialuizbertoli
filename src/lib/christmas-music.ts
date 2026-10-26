@@ -68,7 +68,7 @@ const JINGLE_B: MelodyEvent[] = [
   ["F4", 1], ["D4", 1], ["C4", 2],
 ];
 
-const SECTIONS: Section[] = [
+export const SECTIONS: Section[] = [
   {
     title: "Jingle Bells",
     bpm: 132,
@@ -205,7 +205,7 @@ function planSection(section: Section, index: number): Planned[] {
   return out;
 }
 
-function planMedley(): { events: Planned[]; length: number; marks: { t: number; title: string }[] } {
+export function planMedley(): { events: Planned[]; length: number; marks: { t: number; title: string }[] } {
   const events: Planned[] = [];
   const marks: { t: number; title: string }[] = [];
   let offset = 0;
